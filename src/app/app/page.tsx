@@ -3,12 +3,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function AppPage() {
     return (
-        <main className="container flex w-full flex-col items-center">
+        <main className="container flex w-full max-w-2xl flex-col items-center">
             <Tabs
                 defaultValue="normal-mode"
                 className="flex w-full flex-col items-center gap-10"
             >
-                <TabsList className="w-full max-w-lg">
+                <TabsList className="w-full">
                     <TabsTrigger value="normal-mode" className="w-full">
                         Normal Mode
                     </TabsTrigger>
@@ -16,7 +16,7 @@ export default function AppPage() {
                         Beast Mode
                     </TabsTrigger>
                 </TabsList>
-                <TabsContent value="normal-mode" className="w-full max-w-lg">
+                <TabsContent value="normal-mode" className="w-full">
                     <NormalModeForm />
                 </TabsContent>
                 <TabsContent value="beast-mode">

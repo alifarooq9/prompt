@@ -16,6 +16,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { Icons } from "@/components/ui/icons";
+import { ResponseForm } from "@/components/response-form";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const formSchema = z.object({
     input: z.string().min(3, "Your input is too short!"),
@@ -96,11 +98,16 @@ export function NormalModeForm() {
                 </form>
             </Form>
 
-            {response ? (
-                <div className="mt-8">
-                    <h2 className="text-2xl font-bold">Generated Prompt</h2>
-                    <span className="mt-2">{response}</span>
+            {isLoading ? (
+                <div className="mt-8 grid gap-4">
+                    <h2 className="text-lg font-semibold">
+                        Use this prompt to generate a response:
+                    </h2>
+
+                    <Skeleton className="h-32 w-full" />
                 </div>
+            ) : response ? (
+                <ResponseForm key={response} response={response} />
             ) : null}
         </div>
     );
