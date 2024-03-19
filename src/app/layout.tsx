@@ -1,10 +1,10 @@
 import "@/styles/globals.css";
-import { Schibsted_Grotesk } from "next/font/google";
+import { Inter } from "next/font/google";
 import { Providers } from "@/components/providers";
+import AppHeader from "@/components/header";
 
-const schibstedGrotesk = Schibsted_Grotesk({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-sans",
 });
 
 export const metadata = {
@@ -21,8 +21,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`font-sans ${schibstedGrotesk.variable}`}>
-        <Providers>{children}</Providers>
+      <body className={`${inter.className}`}>
+        <Providers>
+          <AppHeader />
+          {children}
+        </Providers>
       </body>
     </html>
   );
