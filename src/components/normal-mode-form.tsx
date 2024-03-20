@@ -18,16 +18,17 @@ import { useState } from "react";
 import { Icons } from "@/components/ui/icons";
 import { ResponseForm } from "@/components/response-form";
 import { Skeleton } from "@/components/ui/skeleton";
+import type { Body } from "@/types/prompt-api";
 
 const formSchema = z.object({
-    input: z.string().min(3, "Your input is too short!"),
+    topic: z.string().min(3, "Your input is too short!"),
 });
 
 export function NormalModeForm() {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            input: "",
+            topic: "",
         },
     });
 
@@ -44,8 +45,9 @@ export function NormalModeForm() {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    input: data.input,
-                }),
+                    mode: "normal",
+                    topic: data.topic,
+                } as Body),
             });
 
             const json = (await res.json()) as { content: string };
@@ -67,7 +69,7 @@ export function NormalModeForm() {
                 >
                     <FormField
                         control={form.control}
-                        name="input"
+                        name="topic"
                         render={({ field }) => (
                             <FormItem>
                                 <FormLabel>
