@@ -7,8 +7,12 @@ export const env = createEnv({
      * isn't built with invalid env vars.
      */
     server: {
-        NODE_ENV: z.enum(["development", "test", "production"]),
+        NODE_ENV: z
+            .enum(["development", "test", "production"])
+            .default("development"),
         HUGGINGFACE_API_KEY: z.string(),
+        DATABASE_URL: z.string().url(),
+        DATABASE_AUTH_TOKEN: z.string(),
     },
 
     /**
@@ -27,6 +31,8 @@ export const env = createEnv({
     runtimeEnv: {
         NODE_ENV: process.env.NODE_ENV,
         HUGGINGFACE_API_KEY: process.env.HUGGINGFACE_API_KEY,
+        DATABASE_URL: process.env.DATABASE_URL,
+        DATABASE_AUTH_TOKEN: process.env.DATABASE_AUTH_TOKEN,
         // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
     },
     /**
