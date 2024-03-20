@@ -1,4 +1,5 @@
 export const siteUrls = {
-  home: "/",
-  app: "/app",
+    home: "/",
+    app: "/app",
+    signup: "/auth/signup",
 } as const;

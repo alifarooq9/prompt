@@ -12,6 +12,8 @@ export const createTable = sqliteTableCreator((name) => `prompt_${name}`);
 
 export const userTable = createTable("user", {
     id: text("id").notNull().primaryKey(),
+    username: text("username").notNull().unique(),
+    hashedPassword: text("hashed_password").notNull(),
 });
 
 export const sessionTable = createTable("session", {

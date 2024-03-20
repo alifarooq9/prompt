@@ -1,6 +1,6 @@
 import { siteUrls } from "@/config/urls";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 export default function AppHeader() {
@@ -17,11 +17,17 @@ export default function AppHeader() {
                     <Button variant="ghost" size="sm">
                         Log In
                     </Button>
-                    <Button size="sm" className="gap-1">
+                    <Link
+                        href={siteUrls.signup}
+                        className={buttonVariants({
+                            size: "sm",
+                            className: "gap-1",
+                        })}
+                    >
                         <span>Sign Up</span>
                         <span className="font-light">-</span>
                         <span className="font-light">it&apos;s free</span>
-                    </Button>
+                    </Link>
                 </section>
             </div>
         </header>
