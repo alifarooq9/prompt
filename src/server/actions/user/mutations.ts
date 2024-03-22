@@ -5,24 +5,22 @@ import { generateId } from "lucia";
 import { userTable } from "@/server/db/schema";
 import { lucia } from "@/server/auth";
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 import * as argon2 from "argon2";
 import { eq } from "drizzle-orm";
-import { siteUrls } from "@/config/urls";
 
-interface SignDataProps {
-    username: string;
+interface CreateUserMutationsProps {
+    email: string;
     password: string;
 }
 
-export async function createUserMutation(data: SignDataProps) {
+export async function createUserMutation(data: CreateUserMutationsProps) {
     const hashedPassword = await argon2.hash(data.password);
     const userId = generateId(15);
 
     const isUserExists = await db
         .select()
         .from(userTable)
-        .where(eq(userTable.username, data.username))
+        .where(eq(userTable.email, data.email))
         .execute();
 
     if (isUserExists.length) {
@@ -33,7 +31,7 @@ export async function createUserMutation(data: SignDataProps) {
         .insert(userTable)
         .values({
             id: userId,
-            username: data.username,
+            email: data.email,
             hashedPassword: hashedPassword,
         })
         .execute();
@@ -46,5 +44,5 @@ export async function createUserMutation(data: SignDataProps) {
         sessionCookie.attributes,
     );
 
-    return redirect(siteUrls.app);
+    return { userId };
 }

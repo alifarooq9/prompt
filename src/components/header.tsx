@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 
-export default function AppHeader() {
+export default function WebHeader() {
     return (
         <header className="container flex h-20 items-center justify-between">
             <Link href={siteUrls.home} className="text-2xl font-bold">
