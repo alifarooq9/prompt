@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 import { Inter } from "next/font/google";
 import { Providers } from "@/components/providers";
 import { Toaster } from "@/components/ui/sonner";
+import { Background } from "@/components/ui/background";
 
 const inter = Inter({
     subsets: ["latin"],
@@ -23,8 +24,10 @@ export default function RootLayout({
         <html lang="en">
             <body className={`${inter.className}`}>
                 <Providers>
-                    {children}
-                    <Toaster richColors closeButton />
+                    <Background>
+                        {children}
+                        <Toaster richColors closeButton />
+                    </Background>
                 </Providers>
             </body>
         </html>
