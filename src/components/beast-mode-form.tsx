@@ -20,6 +20,7 @@ import { ResponseForm } from "@/components/response-form";
 import { Skeleton } from "@/components/ui/skeleton";
 import type { Body } from "@/types/prompt-api";
 import { TextareaAutosize } from "@/components/ui/textarea";
+import { toast } from "sonner";
 
 const formSchema = z.object({
     topic: z.string().min(3, "Your topic is too short!"),
@@ -76,7 +77,7 @@ export function BeastModeForm() {
 
             setResponse(json.content);
         } catch (error) {
-            console.log(error, "Error");
+            toast.error("An error occurred. Please try again.");
         } finally {
             setIsLoading(false);
         }

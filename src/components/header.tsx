@@ -1,6 +1,6 @@
 import { siteUrls } from "@/config/urls";
 import Link from "next/link";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { getServerSession } from "@/server/auth";
 import { Suspense } from "react";
@@ -42,9 +42,15 @@ async function WebHeaderAuth() {
                 </Link>
             ) : (
                 <>
-                    <Button variant="ghost" size="sm">
-                        Log In
-                    </Button>
+                    <Link
+                        href={siteUrls.signin}
+                        className={buttonVariants({
+                            size: "sm",
+                            variant: "ghost",
+                        })}
+                    >
+                        <span>Sign In</span>
+                    </Link>
                     <Link
                         href={siteUrls.signup}
                         className={buttonVariants({

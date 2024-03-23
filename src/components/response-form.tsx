@@ -1,6 +1,7 @@
 import { TextareaAutosize } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 interface ResponseFormProps {
     response: string;
@@ -17,7 +18,7 @@ export function ResponseForm({ response }: ResponseFormProps) {
             await navigator.clipboard.writeText(textarea);
             setCopied(true);
         } catch (e) {
-            console.error(e);
+            toast.error("An error occurred. Please try again.");
         } finally {
             setIsCopying(false);
         }

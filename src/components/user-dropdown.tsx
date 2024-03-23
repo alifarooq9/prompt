@@ -35,6 +35,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Icons } from "./ui/icons";
 import { useState } from "react";
+import { toast } from "sonner";
 
 interface UserDropdownProps {
     user: User | null;
@@ -49,6 +50,20 @@ export function UserDropdown({ user }: UserDropdownProps) {
             setIsOpen(false);
         },
     });
+
+    const onSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        const result = await mutateAsync();
+
+        if (result?.error) {
+            return toast.error(
+                result.error ?? "An error occurred. Please try again.",
+            );
+        }
+
+        toast.success("You have been signed out.");
+    };
 
     return (
         <AlertDialog open={isOpen} onOpenChange={(o) => setIsOpen(o)}>
@@ -96,12 +111,7 @@ export function UserDropdown({ user }: UserDropdownProps) {
             </DropdownMenu>
 
             <AlertDialogContent asChild>
-                <form
-                    onSubmit={async (e) => {
-                        e.preventDefault();
-                        await mutateAsync();
-                    }}
-                >
+                <form onSubmit={onSubmit}>
                     <AlertDialogHeader>
                         <AlertDialogTitle>
                             Are you sure you want to sign out?

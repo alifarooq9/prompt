@@ -11,7 +11,7 @@ import {
     FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { signup } from "@/server/actions/auth";
+import { signin } from "@/server/actions/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
@@ -19,44 +19,31 @@ import { z } from "zod";
 import { Icons } from "./ui/icons";
 import { toast } from "sonner";
 
-const formSchema = z
-    .object({
-        email: z.string().email({ message: "Invalid email address" }),
-        password: z
-            .string()
-            .min(5, { message: "Password must be at least 5 characters" })
-            .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{5,}$/, {
-                message:
-                    "Password must contain at least one uppercase letter, one lowercase letter, and one number",
-            }),
-        confirmPassword: z
-            .string()
-            .min(5, { message: "Password must be at least 5 characters" })
-            .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{5,}$/, {
-                message:
-                    "Password must contain at least one uppercase letter, one lowercase letter, and one number",
-            }),
-    })
-    .refine((data) => data.password === data.confirmPassword, {
-        message: "Passwords do not match",
-        path: ["confirmPassword"],
-    });
+const formSchema = z.object({
+    email: z.string().email({ message: "Invalid email address" }),
+    password: z
+        .string()
+        .min(5, { message: "Password must be at least 5 characters" })
+        .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{5,}$/, {
+            message:
+                "Password must contain at least one uppercase letter, one lowercase letter, and one number",
+        }),
+});
 
 type FormSchemaType = z.infer<typeof formSchema>;
 
-export function SignupForm() {
+export function SigninForm() {
     const form = useForm<FormSchemaType>({
         resolver: zodResolver(formSchema),
         defaultValues: {
             email: "",
             password: "",
-            confirmPassword: "",
         },
     });
 
     const { isPending, mutateAsync } = useMutation({
         mutationFn: () =>
-            signup({
+            signin({
                 email: form.getValues().email,
                 password: form.getValues().password,
             }),
@@ -71,7 +58,7 @@ export function SignupForm() {
             );
         }
 
-        toast.success("Your account has been created.");
+        toast.success("You have been signed in.");
     };
 
     return (
@@ -87,8 +74,8 @@ export function SignupForm() {
                                 <Input {...field} />
                             </FormControl>
                             <FormDescription>
-                                Enter the email address you want to use for your
-                                account
+                                Enter the email address you want to use for sign
+                                in
                             </FormDescription>
                             <FormMessage />
                         </FormItem>
@@ -105,25 +92,7 @@ export function SignupForm() {
                                 <Input type="password" {...field} />
                             </FormControl>
                             <FormDescription>
-                                Password must contain at least one uppercase
-                                letter, one lowercase letter, and one number
-                            </FormDescription>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-
-                <FormField
-                    control={form.control}
-                    name="confirmPassword"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Confirm Password</FormLabel>
-                            <FormControl>
-                                <Input type="password" {...field} />
-                            </FormControl>
-                            <FormDescription>
-                                Please confirm your password
+                                Enter the password for your account.
                             </FormDescription>
                             <FormMessage />
                         </FormItem>
@@ -136,9 +105,7 @@ export function SignupForm() {
                     className="w-full gap-2"
                 >
                     {isPending ? <Icons.spinner className="h-4 w-4" /> : null}
-                    <span>
-                        {isPending ? "Creating account..." : "Create Account"}
-                    </span>
+                    <span>{isPending ? "Signing in..." : "Sign in"}</span>
                 </Button>
             </form>
         </Form>

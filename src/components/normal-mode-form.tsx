@@ -19,6 +19,7 @@ import { Icons } from "@/components/ui/icons";
 import { ResponseForm } from "@/components/response-form";
 import { Skeleton } from "@/components/ui/skeleton";
 import type { Body } from "@/types/prompt-api";
+import { toast } from "sonner";
 
 const formSchema = z.object({
     topic: z.string().min(3, "Your input is too short!"),
@@ -54,7 +55,7 @@ export function NormalModeForm() {
 
             setResponse(json.content);
         } catch (error) {
-            console.log(error, "Error");
+            toast.error("An error occurred. Please try again.");
         } finally {
             setIsLoading(false);
         }

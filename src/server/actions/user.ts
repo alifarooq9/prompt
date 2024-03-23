@@ -6,23 +6,30 @@ import { userTable } from "@/server/db/schema";
 import * as argon2 from "argon2";
 import { eq } from "drizzle-orm";
 
-interface CreateUserMutationsProps {
+interface CreateUserProps {
     email: string;
     password: string;
 }
 
-export async function createUserMutation(data: CreateUserMutationsProps) {
+type CreateUserResult =
+    | { success: true; userId: string }
+    | { success: false; error: string };
+
+export async function createUser(
+    data: CreateUserProps,
+): Promise<CreateUserResult> {
     const hashedPassword = await argon2.hash(data.password);
     const userId = generateId(15);
 
-    const isUserExists = await db
-        .select()
-        .from(userTable)
-        .where(eq(userTable.email, data.email))
-        .execute();
+    const isUserExists = await db.query.userTable.findFirst({
+        where: eq(userTable.email, data.email),
+    });
 
-    if (isUserExists.length) {
-        throw new Error("User already exists");
+    if (isUserExists) {
+        return {
+            success: false,
+            error: "User already exists",
+        };
     }
 
     await db
@@ -34,5 +41,5 @@ export async function createUserMutation(data: CreateUserMutationsProps) {
         })
         .execute();
 
-    return { userId };
+    return { userId, success: true };
 }

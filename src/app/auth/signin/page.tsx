@@ -2,9 +2,9 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import { siteUrls } from "@/config/urls";
-import { SignupForm } from "@/components/signup-form";
+import { SigninForm } from "@/components/signin-form";
 
-export default function SignupPage() {
+export default function SigninPage() {
     return (
         <main className="container relative grid min-h-screen flex-col items-center justify-center lg:max-w-none lg:grid-cols-2 lg:px-0">
             <header className="absolute left-4 right-4 top-4 z-20 flex items-center justify-between md:left-8 md:right-8 md:top-8">
@@ -12,10 +12,10 @@ export default function SignupPage() {
                     Prompt.
                 </Link>
                 <Link
-                    href={siteUrls.signin}
+                    href={siteUrls.signup}
                     className={cn(buttonVariants({ variant: "ghost" }))}
                 >
-                    Sign In
+                    Sign up
                 </Link>
             </header>
             <div className="relative hidden h-full flex-col bg-muted p-10 dark:border-r lg:flex">
@@ -37,15 +37,15 @@ export default function SignupPage() {
                 <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
                     <div className="flex flex-col space-y-2 text-center">
                         <h1 className="text-2xl font-semibold tracking-tight">
-                            Create an account
+                            Welcome back!
                         </h1>
                         <p className="text-sm text-muted-foreground">
-                            Enter your email below to create your account
+                            Enter your email below to sign in
                         </p>
                     </div>
-                    <SignupForm />
+                    <SigninForm />
                     <p className="px-8 text-center text-sm text-muted-foreground">
-                        By clicking Create Account, you agree to our{" "}
+                        By clicking Sign in, you agree to our{" "}
                         <Link
                             href="/terms"
                             className="underline underline-offset-4 hover:text-primary"
