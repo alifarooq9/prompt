@@ -1,6 +1,7 @@
 import { buttonVariants } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
 import { siteUrls } from "@/config/urls";
+import Image from "next/image";
 import Link from "next/link";
 import Wrapper from "react-wrap-balancer";
 
@@ -39,6 +40,26 @@ export default function HomePage() {
                     <Icons.gitHub className="h-4 w-4" />
                     <span>Github</span>
                 </Link>
+            </div>
+
+            <div className="relative mt-10 block dark:hidden">
+                <Image
+                    src={`/app-screenshort-light.png`}
+                    alt="App screenshot"
+                    width={2432}
+                    height={1442}
+                    className="rounded-md"
+                />
+            </div>
+
+            <div className="relative mt-10 hidden dark:block">
+                <Image
+                    src={`/app-screenshort-dark.png`}
+                    alt="App screenshot"
+                    width={2432}
+                    height={1442}
+                    className="rounded-md"
+                />
             </div>
         </main>
     );
