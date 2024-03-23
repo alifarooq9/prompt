@@ -47,6 +47,7 @@ async function WebHeaderAuth() {
                         className={buttonVariants({
                             size: "sm",
                             variant: "ghost",
+                            className: "hidden sm:flex",
                         })}
                     >
                         <span>Sign In</span>
@@ -59,8 +60,10 @@ async function WebHeaderAuth() {
                         })}
                     >
                         <span>Sign Up</span>
-                        <span className="font-light">-</span>
-                        <span className="font-light">it&apos;s free</span>
+                        <span className="hidden font-light sm:block">-</span>
+                        <span className="hidden font-light sm:block">
+                            it&apos;s free
+                        </span>
                     </Link>
                 </>
             )}
