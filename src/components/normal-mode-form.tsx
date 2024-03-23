@@ -90,7 +90,11 @@ export function NormalModeForm() {
                             </FormItem>
                         )}
                     />
-                    <Button type="submit" className="gap-2">
+                    <Button
+                        disabled={isLoading}
+                        type="submit"
+                        className="gap-2"
+                    >
                         {isLoading ? (
                             <Icons.spinner className="h-4 w-4" />
                         ) : null}
