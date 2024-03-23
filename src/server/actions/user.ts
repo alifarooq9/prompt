@@ -3,8 +3,6 @@
 import { db } from "@/server/db";
 import { generateId } from "lucia";
 import { userTable } from "@/server/db/schema";
-import { lucia } from "@/server/auth";
-import { cookies } from "next/headers";
 import * as argon2 from "argon2";
 import { eq } from "drizzle-orm";
 
@@ -35,14 +33,6 @@ export async function createUserMutation(data: CreateUserMutationsProps) {
             hashedPassword: hashedPassword,
         })
         .execute();
-
-    const session = await lucia.createSession(userId, {});
-    const sessionCookie = lucia.createSessionCookie(session.id);
-    cookies().set(
-        sessionCookie.name,
-        sessionCookie.value,
-        sessionCookie.attributes,
-    );
 
     return { userId };
 }

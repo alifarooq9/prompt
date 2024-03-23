@@ -32,7 +32,7 @@ export async function POST(req: Request) {
                     Conciseness & tone of the content,
                     Context or background information,
                     Additional information or requirements,
-                    Cretria to follow: Define a role, For eg: Act as an Professional Copywrite, You are a professional Artist. Always include in the end "Ask me atleast 10 question before answering it"
+                    Always include in the end "Ask me atleast 10 question before answering it." Do Not add question by your self.
                     Add more details here...`,
                 },
             ]),
@@ -61,7 +61,7 @@ export async function POST(req: Request) {
             {
                 role: "user",
                 content: `You're an experienced AI prompt engineer. you only write medium DETAILED prompts. I want your to generate a reverse prompt on the topic of: "${body.topic}". do not give your answer just write a medium detailed prompt for the topic. Do not give a response. Just write a medium detailed prompt.
-                    Use the details below and you must add more detials to prompt.
+                Use the details below and you must add more detials to prompt.
                     Things to Include in the Prompt:
                     Role: Act as a(n): ${body.role}
                     Objective in this scenario: ${body.objective}
@@ -70,7 +70,7 @@ export async function POST(req: Request) {
                     Conciseness & tone of the content: ${body.conciseness}
                     Context or background information: ${body.context}
                     Additional information or requirements: ${body.additionalInfo}
-                    Cretria to follow: Define a role, For eg: Act as an Professional Copywrite, You are a professional Artist. Always include in the end "Ask me atleast 10 question before answering it"
+                    Always include in the end "Ask me atleast 10 question before answering it." Do Not add question by your self.
                     Add more details here...`,
             },
         ]),

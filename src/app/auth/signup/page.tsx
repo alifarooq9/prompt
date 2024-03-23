@@ -6,25 +6,21 @@ import { SignupForm } from "@/components/signup-form";
 
 export default function SignupPage() {
     return (
-        <main className="container relative hidden min-h-screen flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
-            <Link
-                href="/examples/authentication"
-                className={cn(
-                    buttonVariants({ variant: "ghost" }),
-                    "absolute right-4 top-4 md:right-8 md:top-8",
-                )}
-            >
-                Login
-            </Link>
-            <div className="relative hidden h-full flex-col bg-muted p-10 text-white dark:border-r lg:flex">
-                <div className="absolute inset-0 bg-zinc-900" />
-                <Link
-                    href={siteUrls.home}
-                    className="relative z-20 flex items-center text-2xl font-bold"
-                >
+        <main className="container relative grid min-h-screen flex-col items-center justify-center lg:max-w-none lg:grid-cols-2 lg:px-0">
+            <header className="absolute left-4 right-4 top-4 z-20 flex items-center justify-between md:left-8 md:right-8 md:top-8">
+                <Link href={siteUrls.home} className="text-2xl font-bold">
                     Prompt.
                 </Link>
-                <div className="relative z-20 mt-auto">
+                <Link
+                    href="/examples/authentication"
+                    className={cn(buttonVariants({ variant: "ghost" }))}
+                >
+                    Login
+                </Link>
+            </header>
+            <div className="relative hidden h-full flex-col bg-muted p-10 dark:border-r lg:flex">
+                <div className="absolute inset-0 bg-secondary" />
+                <div className="relative z-20 mt-auto hidden lg:block">
                     <blockquote className="space-y-2">
                         <p className="text-lg">
                             &ldquo; Prompt is a great tool to generate

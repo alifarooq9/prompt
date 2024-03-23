@@ -9,10 +9,18 @@ export default function HomePage() {
         <main className="container flex flex-col items-center gap-6 py-14">
             <Wrapper
                 as="h1"
-                className="text-center text-6xl font-bold leading-tight text-muted-foreground"
+                className="max-w-3xl text-center text-5xl font-bold leading-tight"
             >
-                Generate <span className="text-foreground">Prompts</span> for
-                ChatGPT or AI Chatbots
+                Generate Prompts for ChatGPT or AI Chatbots
+            </Wrapper>
+            <Wrapper
+                as="p"
+                className="max-w-3xl text-center text-lg text-muted-foreground"
+            >
+                Generate prompts for AI chatbots like ChatGPT, GPT-3, and others
+                with a simple and easy-to-use interface. You can generate
+                prompts for various use cases like chatbots, creative writing,
+                and more.
             </Wrapper>
             <div className="flex items-center gap-3">
                 <Link href={siteUrls.app} className={buttonVariants()}>

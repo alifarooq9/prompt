@@ -11,7 +11,7 @@ import {
     FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { SignupMutation } from "@/server/actions/auth/mutations";
+import { signup } from "@/server/actions/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
@@ -55,7 +55,7 @@ export function SignupForm() {
 
     const { isPending, mutate } = useMutation({
         mutationFn: () =>
-            SignupMutation({
+            signup({
                 email: form.getValues().email,
                 password: form.getValues().password,
             }),
@@ -75,10 +75,7 @@ export function SignupForm() {
                         <FormItem>
                             <FormLabel>Email</FormLabel>
                             <FormControl>
-                                <Input
-                                    placeholder="hey@example.com"
-                                    {...field}
-                                />
+                                <Input {...field} />
                             </FormControl>
                             <FormDescription>
                                 Enter the email address you want to use for your
@@ -124,7 +121,11 @@ export function SignupForm() {
                     )}
                 />
 
-                <Button type="submit" className="w-full gap-2">
+                <Button
+                    disabled={isPending}
+                    type="submit"
+                    className="w-full gap-2"
+                >
                     {isPending ? (
                         <Icons.spinner className="h-4 w-4 animate-spin" />
                     ) : null}
