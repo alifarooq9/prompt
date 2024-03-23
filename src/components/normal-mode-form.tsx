@@ -91,7 +91,7 @@ export function NormalModeForm() {
                     />
                     <Button type="submit" className="gap-2">
                         {isLoading ? (
-                            <Icons.spinner className="h-4 w-4 animate-spin" />
+                            <Icons.spinner className="h-4 w-4" />
                         ) : null}
                         <span>
                             {isLoading ? "Generating..." : "Generate Prompt"}

@@ -126,9 +126,7 @@ export function SignupForm() {
                     type="submit"
                     className="w-full gap-2"
                 >
-                    {isPending ? (
-                        <Icons.spinner className="h-4 w-4 animate-spin" />
-                    ) : null}
+                    {isPending ? <Icons.spinner className="h-4 w-4" /> : null}
                     <span>Create</span>
                 </Button>
             </form>
