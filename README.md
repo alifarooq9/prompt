@@ -1,29 +1,91 @@
-# Create T3 App
+# Prompt - Generate prompt for ChatGpt
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+Generate prompts for AI chatbots like ChatGPT, GPT-3, and others with a simple and easy-to-use interface. You can generate prompts for various use cases like chatbots, creative writing, and more.
 
-## What's next? How do I make an app with this?
+## Creator 🫶
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+-   Github [@alifarooq9](https://www.github.com/alifarooq9)
+-   Twitter [@AliFarooqDev](https://www.twitter.com/AliFarooqDev)
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## Built using 🛠️
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+-   [Create t3 App](https://create.t3.gg)
+-   [Next.js](https://nextjs.org)
+-   [TailwindCSS](https://tailwindcss.com)
+-   [Shadcn/ui](https://ui.shadcn.com)
+-   [Emilkowalski/sonner](https://sonner.emilkowal.ski)
+-   [Lucia-auth](https://lucia-auth.com)
+-   [Drizzle](https://orm.drizzle.team)
+-   [HuggingFace](https://huggingface.co)
+-   [Turso](https://turso.tech)
 
-## Learn More
+## Get Started 🚀
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+### Requirements
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+-   [Node.js](https://nodejs.org/en/) >= 20.0.0
+-   [pnpm](https://pnpm.io/) >= 8.6.2
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+### Setup
 
-## How do I deploy this?
+1. Clone the project
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+```sh
+  git clone https://github.com/alifarooq9/prompt
+```
+
+2. Go to the project directory
+
+```sh
+  cd prompt
+```
+
+3. Install dependencies
+
+```sh
+  pnpm install
+```
+
+4. Create turso db
+   Create your instance of turso db from their website: [turso](https://turso.tech) or using their cli: [turso cli quickstart](https://docs.turso.tech/quickstart).
+
+5. Huggingface Api Key
+   Create a huggingface access token by going → Settings → Access Token. [HuggingFace](https://huggingface.co).
+
+6. Set up your .env file
+   You will find .env.example. Create your own copy, and rename .env.example to .env, or copy the environment variables from below.
+
+```sh
+#Add your turbo url and token
+DATABASE_URL="xxxxx"
+DATABASE_AUTH_TOKEN="xxxxx"
+
+#Add your huggingface access token
+HUGGINGFACE_API_KEY="xxxxx"
+```
+
+7. Push schema to turso
+
+```sh
+  pnpm db:push
+```
+
+8. Run locally
+
+```sh
+  pnpm dev
+```
+
+or
+
+```sh
+  pnpm dev:turbo
+```
+
+## Contributing 🤝
+
+Contributions are always welcome!
+
+## Support
+
+For support, email ping@alifarooq.xyz or message me on 𝕏 (formerly twitter) [@AliFarooqDev](https://www.twitter.com/AliFarooqDev).
