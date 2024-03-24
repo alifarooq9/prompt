@@ -2,7 +2,7 @@ import { siteUrls } from "@/config/urls";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { getServerSession } from "@/server/auth";
+import { validateAuth } from "@/server/auth";
 import { Suspense } from "react";
 import { UserDropdown } from "@/components/user-dropdown";
 
@@ -26,7 +26,7 @@ export function WebHeader() {
 }
 
 async function WebHeaderAuth() {
-    const { user } = await getServerSession();
+    const { user } = await validateAuth();
 
     return (
         <section className="flex items-center gap-2 pl-2">
@@ -72,7 +72,7 @@ async function WebHeaderAuth() {
 }
 
 export async function AppHeader() {
-    const { user } = await getServerSession();
+    const { user } = await validateAuth();
 
     return (
         <header className="container flex h-20 items-center justify-between">

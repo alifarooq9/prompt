@@ -11,12 +11,7 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {} from "@radix-ui/react-icons";
-import {
-    CircleUserRound,
-    LogOutIcon,
-    TerminalIcon,
-    User2Icon,
-} from "lucide-react";
+import { CircleUserRound, LogOutIcon, TerminalIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { siteUrls } from "@/config/urls";
@@ -88,13 +83,6 @@ export function UserDropdown({ user }: UserDropdownProps) {
                                 <TerminalIcon className="mr-2 h-4 w-4" />
                                 <span>Generate Prompts</span>
                                 <DropdownMenuShortcut>⇧⌘G</DropdownMenuShortcut>
-                            </Link>
-                        </DropdownMenuItem>
-                        <DropdownMenuItem asChild>
-                            <Link href={siteUrls.profile}>
-                                <User2Icon className="mr-2 h-4 w-4" />
-                                <span>Profile</span>
-                                <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
                             </Link>
                         </DropdownMenuItem>
                     </DropdownMenuGroup>

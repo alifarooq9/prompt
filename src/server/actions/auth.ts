@@ -3,7 +3,7 @@
 import { siteUrls } from "@/config/urls";
 import { createUser } from "@/server/actions/user";
 import { redirect } from "next/navigation";
-import { getServerSession, lucia } from "@/server/auth";
+import { validateAuth, lucia } from "@/server/auth";
 import { cookies } from "next/headers";
 import { db } from "@/server/db";
 import { eq } from "drizzle-orm";
@@ -77,7 +77,7 @@ export async function signin(data: SigninProps) {
 }
 
 export async function signout() {
-    const { session } = await getServerSession();
+    const { session } = await validateAuth();
     if (!session) {
         return {
             error: "Unauthorized",

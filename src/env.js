@@ -21,6 +21,7 @@ export const env = createEnv({
      * `NEXT_PUBLIC_`.
      */
     client: {
+        NEXT_PUBLIC_SITE_URL: z.string().url(),
         // NEXT_PUBLIC_CLIENTVAR: z.string(),
     },
 
@@ -33,6 +34,7 @@ export const env = createEnv({
         HUGGINGFACE_API_KEY: process.env.HUGGINGFACE_API_KEY,
         DATABASE_URL: process.env.DATABASE_URL,
         DATABASE_AUTH_TOKEN: process.env.DATABASE_AUTH_TOKEN,
+        NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
         // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
     },
     /**

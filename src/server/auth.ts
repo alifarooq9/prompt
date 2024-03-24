@@ -39,7 +39,7 @@ export function getSessionId() {
     return cookies().get(lucia.sessionCookieName)?.value ?? null;
 }
 
-export const getServerSession = cache(
+export const validateAuth = cache(
     async (): Promise<
         { user: User; session: Session } | { user: null; session: null }
     > => {
