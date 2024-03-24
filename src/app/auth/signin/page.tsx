@@ -3,14 +3,8 @@ import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import { siteUrls } from "@/config/urls";
 import { SigninForm } from "@/components/signin-form";
-import { validateAuth } from "@/server/auth";
-import { redirect } from "next/navigation";
 
-export default async function SigninPage() {
-    const { session } = await validateAuth();
-
-    if (session) redirect(siteUrls.app);
-
+export default function SigninPage() {
     return (
         <main className="container relative grid min-h-screen flex-col items-center justify-center lg:max-w-none lg:grid-cols-2 lg:px-0">
             <header className="absolute left-4 right-4 top-4 z-20 flex items-center justify-between md:left-8 md:right-8 md:top-8">
