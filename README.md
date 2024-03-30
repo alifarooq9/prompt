@@ -16,7 +16,7 @@ Generate prompts for AI chatbots like ChatGPT, GPT-3, and others with a simple a
 -   [Emilkowalski/sonner](https://sonner.emilkowal.ski)
 -   [Lucia-auth](https://lucia-auth.com)
 -   [Drizzle](https://orm.drizzle.team)
--   [HuggingFace](https://huggingface.co)
+-   [Google/Gemini](https://ai.google.dev)
 -   [Turso](https://turso.tech)
 
 ## Get Started 🚀
@@ -49,8 +49,8 @@ Generate prompts for AI chatbots like ChatGPT, GPT-3, and others with a simple a
 4. Create turso db
    Create your instance of turso db from their website: [turso](https://turso.tech) or using their cli: [turso cli quickstart](https://docs.turso.tech/quickstart).
 
-5. Huggingface Api Key
-   Create a huggingface access token by going → Settings → Access Token. [HuggingFace](https://huggingface.co).
+5. Google/Gemini Api Key
+   Create a google gemini api key. [Google/Gemini](https://ai.google.dev).
 
 6. Set up your .env file
    You will find .env.example. Create your own copy, and rename .env.example to .env, or copy the environment variables from below.
@@ -60,8 +60,8 @@ Generate prompts for AI chatbots like ChatGPT, GPT-3, and others with a simple a
 DATABASE_URL="xxxxx"
 DATABASE_AUTH_TOKEN="xxxxx"
 
-#Add your huggingface access token
-HUGGINGFACE_API_KEY="xxxxx"
+#Add your gemini access token
+GEMINI_API_KEY="xxxxx"
 ```
 
 7. Push schema to turso

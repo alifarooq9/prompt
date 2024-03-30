@@ -13,6 +13,7 @@
         "db:push": "drizzle-kit push:sqlite"
     },
     "dependencies": {
+        "@google/generative-ai": "^0.3.1",
         "@hookform/resolvers": "^3.3.4",
         "@huggingface/inference": "^2.6.6",
         "@libsql/client": "^0.5.6",

@@ -55,7 +55,7 @@ export function BeastModeForm() {
     const onSubmit = async (data: z.infer<typeof formSchema>) => {
         setIsLoading(true);
         try {
-            const res = await fetch("/api/v1/prompt", {
+            const res = await fetch("/api/v1/prompt/gemini", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
