@@ -46,12 +46,13 @@ export default function HomePage() {
                 <Image
                     src={`/app-screenshort-light.png`}
                     alt="App screenshot"
+                    className="rounded-md"
                     width={2432}
                     height={1442}
-                    className="rounded-md"
                     loading="eager"
                     blurDataURL="/app-screenshort-light.png"
                     placeholder="blur"
+                    priority
                 />
             </div>
 
@@ -59,9 +60,13 @@ export default function HomePage() {
                 <Image
                     src={`/app-screenshort-dark.png`}
                     alt="App screenshot"
+                    className="rounded-md"
                     width={2432}
                     height={1442}
-                    className="rounded-md"
+                    loading="eager"
+                    blurDataURL="/app-screenshort-dark.png"
+                    placeholder="blur"
+                    priority
                 />
             </div>
         </main>
