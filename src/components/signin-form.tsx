@@ -16,7 +16,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Icons } from "./ui/icons";
+import { Icons } from "@/components/ui/icons";
 import { toast } from "sonner";
 
 const formSchema = z.object({

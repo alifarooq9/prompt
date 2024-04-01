@@ -49,6 +49,9 @@ export default function HomePage() {
                     width={2432}
                     height={1442}
                     className="rounded-md"
+                    loading="eager"
+                    blurDataURL="/app-screenshort-light.png"
+                    placeholder="blur"
                 />
             </div>
 
